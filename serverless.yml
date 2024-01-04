@@ -20,10 +20,8 @@ functions:
       subnetIds:
         - subnet-0ec8a3ebd5b728ff6
     events:
-      - http:
-          path: /clam
-          method: post
-          cors: true
+      - sqs:
+          arn: arn:aws:sqs:us-east-2:207124830781:prod_clamav
     image:
       name: unipath-clamav
     fileSystemConfig:
