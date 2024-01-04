@@ -22,6 +22,8 @@ functions:
     events:
       - sqs:
           arn: arn:aws:sqs:us-east-2:207124830781:prod_clamav
+          batchSize: 1
+          enabled: true
     image:
       name: unipath-clamav
     fileSystemConfig:
