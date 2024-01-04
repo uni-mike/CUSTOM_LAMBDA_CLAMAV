@@ -7,7 +7,6 @@ RUN yum update -y && \
     yum clean all && \
     rm -rf /var/cache/yum
 
-
 RUN mkdir -p /mnt/efs/clam && \
     chmod -R 755 /mnt/efs/clam && \
     sed -i 's|^#DatabaseDirectory .*|DatabaseDirectory /mnt/efs/clam|' /etc/clamd.conf && \
