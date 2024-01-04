@@ -1,0 +1,31 @@
+service: lambda-clamav
+
+provider:
+  name: aws
+  region: us-east-2
+  iam:
+    role: arn:aws:iam::207124830781:role/responders-prod-us-east-2-lambdaRole
+  ecr:
+    images:
+      unipath-clamav:
+        uri: 207124830781.dkr.ecr.us-east-2.amazonaws.com/unipath-clamav:latest
+
+functions:
+  unipath-clamav:
+    timeout: 30
+    memorySize: 1024
+    vpc:
+      securityGroupIds:
+        - sg-0e4998c4115db38cd
+      subnetIds:
+        - subnet-0ec8a3ebd5b728ff6
+    events:
+      - http:
+          path: /clam
+          method: post
+          cors: true
+    image:
+      name: unipath-clamav
+    fileSystemConfig:
+      arn: arn:aws:elasticfilesystem:us-east-2:207124830781:access-point/fsap-07f9ec8856385d3a9
+      localMountPath: /mnt/efs

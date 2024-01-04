@@ -1,0 +1,3 @@
+    fileSystemConfig:
+      arn: arn:aws:elasticfilesystem:us-east-2:207124830781:access-point/fsap-07f9ec8856385d3a9
+      localMountPath: /mnt/efs
