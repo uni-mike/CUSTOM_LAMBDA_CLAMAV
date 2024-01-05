@@ -13,7 +13,7 @@ provider:
 functions:
   unipath-clamav:
     timeout: 300
-    memorySize: 1024
+    memorySize: 4096
     vpc:
       securityGroupIds:
         - sg-0e4998c4115db38cd
