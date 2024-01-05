@@ -12,13 +12,9 @@ RUN yum update -y && \
 RUN mkdir -p /mnt/efs/clam && \
     chmod -R 755 /mnt/efs/clam
 
-# Check for clamd.conf and freshclam.conf, create if not exists
-RUN if [ ! -f /etc/clamd.conf ]; then \
-        echo "DatabaseDirectory /mnt/efs/clam" > /etc/clamd.conf; \
-    fi; \
-    if [ ! -f /etc/freshclam.conf ]; then \
-        echo "DatabaseDirectory /mnt/efs/clam" > /etc/freshclam.conf; \
-    fi
+# Copy ClamAV configuration files
+COPY clamd.conf /etc/clamd.conf
+COPY freshclam.conf /etc/freshclam.conf
 
 ENV AWS_LAMBDA_RUNTIME_API=localhost:9002
 
