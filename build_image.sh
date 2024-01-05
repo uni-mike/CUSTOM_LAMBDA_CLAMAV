@@ -2,7 +2,7 @@ aws ecr get-login-password --region us-east-2 | docker login --username AWS --pa
 
 docker build --no-cache -t unipath-clamav .
 
-docker tag unipath-clamav:latest 207124830781.dkr.ecr.us-east-2.amazonaws.com/serverless-lambda-scripting-dev:latest
+docker tag unipath-clamav:latest 207124830781.dkr.ecr.us-east-2.amazonaws.com/unipath-clamav:latest
 
 docker push 207124830781.dkr.ecr.us-east-2.amazonaws.com/unipath-clamav:latest
 
