@@ -1,6 +1,5 @@
 FROM public.ecr.aws/lambda/nodejs:16
 
-# Update and install necessary packages
 RUN yum update -y && \
     yum install -y amazon-linux-extras && \
     yum install -y tar gzip nfs-utils && \
@@ -8,11 +7,9 @@ RUN yum update -y && \
     yum clean all && \
     rm -rf /var/cache/yum
 
-# Create ClamAV directories
 RUN mkdir -p /mnt/efs/clam && \
     chmod -R 755 /mnt/efs/clam
 
-# Copy ClamAV configuration files
 COPY clamd.conf /etc/clamd.conf
 COPY freshclam.conf /etc/freshclam.conf
 
