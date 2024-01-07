@@ -14,6 +14,7 @@ COPY clamd.conf /etc/clamd.conf
 COPY freshclam.conf /etc/freshclam.conf
 
 ENV AWS_LAMBDA_RUNTIME_API=localhost:9002
+ENV NODE_PATH=/mnt/efs/node_modules
 
 COPY lib/ /var/task/lib/
 RUN chmod 755 -R /var/task/lib/
